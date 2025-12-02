@@ -1,4 +1,4 @@
-# 🤖 AfterSchool - 교내 방범 로봇 시스템
+# AfterSchool - 교내 방범 로봇 시스템
 
 > 자율 주행 로봇을 활용한 스마트 교내 보안 시스템
 
@@ -479,23 +479,9 @@ docker compose up --build -d
 - S3 버킷 권한 확인 (PutObject, GetObject)
 - IAM 정책 확인
 
-## 🤝 기여하기
-
-기여는 언제나 환영합니다!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 라이센스
-
-이 프로젝트는 MIT 라이센스를 따릅니다. 자세한 내용은 `LICENSE` 파일을 참조하세요.
-
 ## 👥 팀원
 
-- **Backend Developer** - Spring Boot, MQTT, WebSocket, Docker, Jenkins, AWS
-- **Frontend Developer** - React, TypeScript
-- **Robot Engineer** - ROS2, Gazebo, AI Detection
+- **Backend Developer(1)** - Spring Boot, MQTT, WebSocket, Docker, Jenkins, AWS
+- **Frontend Developer(1)** - React, TypeScript
+- **Robot Engineer(4)** - ROS2, Gazebo, AI Detection
 
