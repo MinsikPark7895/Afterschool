@@ -1,0 +1,90 @@
+spring:
+  application:
+    name: afterschool
+
+  # Database Configuration
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  # Redis Configuration (JWT Blacklist)
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DATABASE:0}
+
+  # S3 Configuration
+  cloud:
+    aws:
+      region:
+        static: ${AWS_REGION}
+      credentials:
+        access-key: ${AWS_ACCESS_KEY_ID}
+        secret-key: ${AWS_SECRET_ACCESS_KEY}
+      s3:
+        bucket: ${AWS_S3_BUCKET}
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION}
+  refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION}
+
+# Server Configuration
+server:
+  port: ${SERVER_PORT}
+  servlet:
+    context-path: /api
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    com.ssafy.afterschool: DEBUG
+    org.hibernate.SQL: DEBUG
+
+# Management (Actuator)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+# MQTT Configuration (ROS2 ???)
+mqtt:
+  broker:
+    url: ${MQTT_BROKER_URL}
+    username: ${MQTT_USERNAME}
+    password: ${MQTT_PASSWORD}
+
+# WebSocket Configuration (실시간 통신)
+websocket:
+  allowed-origins: ${WEBSOCKET_ALLOWED_ORIGINS:*}
+  endpoint: /ws
+  message-size-limit: 8192
+  send-buffer-size: 512
+  send-time-limit: 10000
+
+# Domain-specific Configuration
+domain:
+  map:
+    current-map-id: main
+    s3-path-pattern: maps/{filename}
+    # 실제 이미지 크기
+    width: 2062
+    height: 893
+    # resolution, origin 값은 YAML 파일에서 동적으로 로딩됨

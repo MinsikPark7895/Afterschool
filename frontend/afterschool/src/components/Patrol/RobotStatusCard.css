@@ -1,0 +1,195 @@
+.robot-status-card {
+    background: linear-gradient(135deg, #2a2a2a 0%, #343434 100%);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 0;
+    border: 1px solid #3a3a3a;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.robot-status-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4A90E2, #50C878);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.robot-status-card.online {
+    border-color: #4CAF50;
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3), 0 0 0 1px rgba(76, 175, 80, 0.2);
+    transform: translateY(-2px);
+}
+
+.robot-status-card.online::before {
+    opacity: 1;
+    background: linear-gradient(90deg, #4CAF50, #66BB6A);
+}
+
+.robot-status-card.offline {
+    border-color: #666;
+    opacity: 0.6;
+    transform: none;
+}
+
+.robot-status-card.offline::before {
+    background: linear-gradient(90deg, #666, #888);
+    opacity: 0.5;
+}
+
+.robot-status-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.robot-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.status-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.zone-badge {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+    animation: pulse-green 2s ease-in-out infinite;
+}
+
+.zone-badge.offline {
+    background: linear-gradient(135deg, #666, #888);
+    box-shadow: 0 2px 8px rgba(102, 102, 102, 0.3);
+    animation: none;
+}
+
+@keyframes pulse-green {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+    }
+    50% {
+        box-shadow: 0 2px 12px rgba(76, 175, 80, 0.5);
+    }
+}
+
+.connection-status {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.connection-status.online {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: #ffffff;
+    box-shadow: 0 1px 4px rgba(76, 175, 80, 0.4);
+}
+
+.connection-status.offline {
+    background: linear-gradient(135deg, #666, #888);
+    color: #cccccc;
+    box-shadow: 0 1px 4px rgba(102, 102, 102, 0.4);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid #4A90E2;
+    transition: all 0.3s ease;
+}
+
+.status-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-left-color: #66BB6A;
+}
+
+.status-label {
+    font-size: 14px;
+    color: #cccccc;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4A90E2;
+}
+
+.status-value {
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.status-value.battery {
+    color: #66BB6A;
+}
+
+.status-value.state {
+    color: #4A90E2;
+}
+
+.sensor-data {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(74, 144, 226, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.sensor-data h4 {
+    font-size: 14px;
+    color: #4A90E2;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+

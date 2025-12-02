@@ -1,0 +1,169 @@
+/* EditUserModal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background-color: #374151;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid #4b5563;
+}
+
+.modal-content h2 {
+  color: #f9fafb;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  border-bottom: 1px solid #4b5563;
+  padding-bottom: 1rem;
+}
+
+/* 사용자 정보 표시 */
+.user-info {
+  background-color: #4b5563;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #6b7280;
+}
+
+.user-info p {
+  margin: 0.5rem 0;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.user-info p:first-child {
+  margin-top: 0;
+}
+
+.user-info p:last-child {
+  margin-bottom: 0;
+}
+
+.user-info strong {
+  color: #f9fafb;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #e5e7eb;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.025em;
+}
+
+.form-group input {
+  width: 100%;
+  background-color: #4b5563;
+  border: 1px solid #6b7280;
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: #f9fafb;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: #374151;
+}
+
+.form-group input::placeholder {
+  color: #9ca3af;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #4b5563;
+}
+
+.modal-buttons button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.modal-buttons button[type="submit"] {
+  background-color: #10b981;
+  color: white;
+}
+
+.modal-buttons button[type="submit"]:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.modal-buttons button[type="button"] {
+  background-color: #6b7280;
+  color: white;
+}
+
+.modal-buttons button[type="button"]:hover {
+  background-color: #4b5563;
+  transform: translateY(-1px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 640px) {
+  .modal-content {
+    margin: 0.5rem;
+    padding: 1.5rem;
+    max-width: none;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.25rem;
+  }
+  
+  .user-info {
+    padding: 0.75rem;
+  }
+  
+  .user-info p {
+    font-size: 0.8rem;
+  }
+  
+  .modal-buttons {
+    flex-direction: column;
+  }
+  
+  .modal-buttons button {
+    width: 100%;
+  }
+}

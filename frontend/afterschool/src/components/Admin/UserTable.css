@@ -1,0 +1,161 @@
+/* UserTable.css */
+.user-table {
+  width: 100%;
+  background-color: #374151;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #9ca3af;
+  font-size: 1.1rem;
+}
+
+.user-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #374151;
+}
+
+.user-table th {
+  background-color: #4b5563;
+  color: #f3f4f6;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #6b7280;
+}
+
+.user-table td {
+  padding: 1rem;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #4b5563;
+}
+
+.user-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.user-table tbody tr:hover {
+  background-color: #4b5563;
+}
+
+.user-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 역할 배지 */
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.role-badge.admin {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.role-badge.operator {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* 액션 버튼들 */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-buttons button {
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* 빈 상태 */
+.user-table td[colspan] {
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+  background-color: #374151;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .user-table {
+    font-size: 0.85rem;
+  }
+  
+  .user-table th,
+  .user-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .action-buttons button {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-table {
+    overflow-x: auto;
+  }
+  
+  .user-table table {
+    min-width: 600px;
+  }
+  
+  .user-table th,
+  .user-table td {
+    white-space: nowrap;
+    padding: 0.5rem;
+  }
+  
+  .role-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+}

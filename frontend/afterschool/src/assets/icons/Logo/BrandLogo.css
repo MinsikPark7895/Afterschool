@@ -1,0 +1,46 @@
+/* BrandLogo.css */
+.brand {
+  text-align: center;
+  /* margin-top: 1.5rem; */
+}
+
+.brand-title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Abril Fatface";
+  color: white;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.brand-subtitle {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* Responsive Design for Brand Logo */
+@media (max-width: 768px) {
+  .brand-title {
+    font-size: 2rem;
+  }
+  
+  .brand-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-title {
+    font-size: 1.8rem;
+  }
+  
+  .brand-subtitle {
+    font-size: 0.8rem;
+  }
+}

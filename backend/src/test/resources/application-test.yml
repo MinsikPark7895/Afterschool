@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: afterschool-test
+
+  # Test Database Configuration (H2)
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+
+  # JPA Configuration for Test
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.H2Dialect
+
+  # H2 Console (for debugging)
+  h2:
+    console:
+      enabled: true
+
+  # Redis Configuration for Test (embedded)
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 
+      database: 1
+
+# JWT Configuration for Test
+jwt:
+  secret: testSecretKeyForJwtTokenThatShouldBeAtLeast256BitsLong
+  access-token-expiration: 900000  # 15분
+  refresh-token-expiration: 1209600000  # 2주
+
+# Server Configuration for Test
+server:
+  port: 0  # Random port
+
+# Logging Configuration for Test
+logging:
+  level:
+    root: WARN
+    com.ssafy.afterschool: INFO
+    org.hibernate.SQL: WARN
+
+# MQTT Configuration for Test (로컬 테스트 환경용 더미 자격증명)
+mqtt:
+  broker:
+    url: tcp://localhost:1883
+    username: test  # 테스트용 더미 값 (실제 운영 환경과 무관)
+    password: test  # 테스트용 더미 값 (실제 운영 환경과 무관)
+
+# WebSocket Configuration for Test
+websocket:
+  allowed-origins: "*"

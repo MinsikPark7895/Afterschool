@@ -1,0 +1,77 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'NodeJS'
+    }
+
+    stages {
+        stage('🚀 시작') {
+            steps {
+                echo '=================================================='
+                echo '          AfterSchool 프론트엔드 빌드 시작         '
+                echo '=================================================='
+
+                checkout scm
+            }
+        }
+
+        stage('📦 의존성 설치') {
+            steps {
+                echo ''
+                echo '======= npm 의존성 설치 ======='
+
+                dir('frontend/afterschool') {
+                    echo '📦 package.json 확인...'
+                    sh 'ls -la package*.json'
+
+                    echo '📥 npm 패키지 설치...'
+                    sh 'npm ci --silent'
+                    echo '✅ 의존성 설치 완료'
+                }
+
+                echo '======= 의존성 설치 완료 ======='
+                echo ''
+            }
+        }
+
+        stage('⚛️ React 빌드') {
+            steps {
+                echo ''
+                echo '======= React 애플리케이션 빌드 ======='
+
+                dir('frontend/afterschool') {
+                    echo '🏗️ React 프로덕션 빌드...'
+                    sh 'npm run build 2>/dev/null || npm run build'
+
+                    echo '📊 빌드 결과 확인...'
+                    sh 'ls -la build/'
+                    echo '✅ React 빌드 완료'
+                }
+
+                echo '======= React 빌드 완료 ======='
+                echo ''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo ''
+            echo '=================================================='
+            echo '🎉 프론트엔드 파이프라인 성공!'
+            echo '📁 빌드 파일이 build/ 디렉토리에 생성되었습니다'
+            echo '=================================================='
+            updateGitlabCommitStatus name: 'frontend', state: 'success'
+        }
+        failure {
+            echo ''
+            echo '❌ 프론트엔드 파이프라인 실패!'
+            echo '🔍 위 로그를 확인하여 문제를 해결하세요.'
+            updateGitlabCommitStatus name: 'frontend', state: 'failed'
+        }
+        always {
+            cleanWs()
+        }
+    }
+}

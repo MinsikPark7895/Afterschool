@@ -1,0 +1,46 @@
+.admin-dashboard-page {
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.admin-header {
+    background-color: #e5e7eb;
+    color: black;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.admin-dashboard-content {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 200px);
+}
+
+.patrol-records-card {
+    background-color: #374151;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #4b5563;
+}
+
+.patrol-divider {
+    height: 1px;
+    background-color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.patrol-records-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+

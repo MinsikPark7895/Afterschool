@@ -1,0 +1,264 @@
+/* 모달 오버레이 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 모달 컨테이너 */
+.modalContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* 모달 콘텐츠 */
+.modalContent {
+  padding: 24px;
+}
+
+/* 모달 헤더 */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* 닫기 버튼 */
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* 프로필 정보 섹션 */
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* 아바타 섹션 */
+.avatarSection {
+  margin-bottom: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: 0 auto 8px auto;
+  overflow: hidden;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.defaultAvatar {
+  color: white;
+  font-size: clamp(14px, 3.5vw, 20px);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1;
+  width: 100%;
+}
+
+/* 역할 배지 */
+.roleBadge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  min-width: 70px;
+  margin-top: 4px;
+}
+
+.adminBadge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.operatorBadge {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* 사용자 세부 정보 */
+.userDetails {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.userDetails p {
+  margin: 8px 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.userDetails p:first-child {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+/* 사용자 필드 스타일 */
+.userField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  margin: 4px 0;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.fieldLabel {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.fieldValue {
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* 액션 버튼들 */
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.editButton,
+.logoutButton {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editButton {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.editButton:hover {
+  background-color: #2563eb;
+}
+
+.logoutButton {
+  background-color: #ef4444;
+  color: white;
+}
+
+.logoutButton:hover {
+  background-color: #dc2626;
+}
+
+/* 로딩, 에러, 데이터 없음 상태 스타일 */
+.loading {
+  text-align: center;
+  color: #6b7280;
+  font-size: 16px;
+  padding: 40px 20px;
+}
+
+.error {
+  text-align: center;
+  color: #ef4444;
+  font-size: 16px;
+  padding: 40px 20px;
+  background-color: #fef2f2;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+}
+
+.no-data {
+  text-align: center;
+  color: #6b7280;
+  font-size: 16px;
+  padding: 40px 20px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 640px) {
+  .modalContainer {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .modalContent {
+    padding: 16px;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+  }
+  
+  .editButton,
+  .logoutButton {
+    width: 100%;
+  }
+
+  .userField {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .fieldLabel {
+    font-weight: 600;
+  }
+}

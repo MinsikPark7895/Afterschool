@@ -1,0 +1,100 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = 'afterschool-backend'
+        CONTAINER_NAME = 'backend'
+    }
+
+    stages {
+        stage('🚀 시작') {
+            steps {
+                echo '=================================================='
+                echo '           AfterSchool 백엔드 빌드 시작            '
+                echo '=================================================='
+
+                checkout scm
+            }
+        }
+
+        stage('🔨 Spring Boot 빌드') {
+            steps {
+                echo ''
+                echo '======= Gradle 빌드 시작 ======='
+
+                dir('backend') {
+                    echo '🔧 Gradle 실행 권한 설정...'
+                    sh 'chmod +x ./gradlew'
+
+                    echo '🏗️ Spring Boot 애플리케이션 빌드...'
+                    sh './gradlew build -x test --quiet'
+                    echo '✅ 빌드 완료'
+                }
+
+                echo '======= Gradle 빌드 완료 ======='
+                echo ''
+            }
+        }
+
+        stage('🧪 단위 테스트') {
+            steps {
+                echo ''
+                echo '======= 테스트 실행 ======='
+
+                dir('backend') {
+                    echo '🧪 JUnit 테스트 실행...'
+                    sh './gradlew test --console=plain --quiet'
+                    echo '✅ 테스트 완료'
+                }
+
+                echo '======= 테스트 완료 ======='
+                echo ''
+            }
+            post {
+                always {
+                    dir('backend') {
+                        junit testResults: 'build/test-results/test/*.xml', allowEmptyResults: true
+                    }
+                }
+            }
+        }
+
+        stage('🐳 Docker 이미지') {
+            steps {
+                echo ''
+                echo '======= Docker 이미지 생성 ======='
+
+                dir('backend') {
+                    echo '🐳 Docker 이미지 빌드...'
+                    sh """
+                        docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} . --quiet
+                        docker tag ${IMAGE_NAME}:${BUILD_NUMBER} ${IMAGE_NAME}:latest
+                    """
+                    echo '✅ Docker 이미지 생성 완료'
+                }
+
+                echo '======= Docker 이미지 완료 ======='
+                echo ''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo ''
+            echo '=================================================='
+            echo '🎉 백엔드 파이프라인 성공!'
+            echo '=================================================='
+            updateGitlabCommitStatus name: 'backend', state: 'success'
+        }
+        failure {
+            echo ''
+            echo '❌ 백엔드 파이프라인 실패!'
+            echo '🔍 위 로그를 확인하여 문제를 해결하세요.'
+            updateGitlabCommitStatus name: 'backend', state: 'failed'
+        }
+        always {
+            cleanWs()
+        }
+    }
+}

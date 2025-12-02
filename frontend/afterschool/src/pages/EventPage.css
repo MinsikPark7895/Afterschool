@@ -1,0 +1,75 @@
+.event-page {
+  min-height: 100vh;
+  background: #1a1a1a;
+  color: white;
+}
+
+.event-page-header {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: white;
+  padding: 40px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #4a5568;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.event-page-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.header-description {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.8;
+  font-weight: 300;
+  color: #a0aec0;
+}
+
+.event-page-content {
+  padding: 20px 0;
+}
+
+.main-event-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .event-page-header {
+    padding: 20px 0;
+  }
+  
+  .header-content {
+    padding: 0 15px;
+  }
+  
+  .event-page-header h1 {
+    font-size: 24px;
+  }
+  
+  .header-description {
+    font-size: 14px;
+  }
+  
+  .event-page-content {
+    padding: 10px 0;
+  }
+  
+  .main-event-list {
+    margin: 0 10px;
+  }
+}

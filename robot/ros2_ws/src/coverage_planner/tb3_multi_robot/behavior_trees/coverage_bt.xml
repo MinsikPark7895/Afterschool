@@ -1,0 +1,20 @@
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="Coverage Sequence">
+      <!-- Check if waypoints are completed -->
+      <GoalReached name="CheckWaypointsComplete"/>
+      <!-- Follow the waypoint list sent by coverage_planner.py -->
+      <FollowWaypoints name="FollowWaypointSequence" action_name="follow_waypoints"/>
+      <!-- Handle obstacles or failures -->
+      <Fallback name="ObstacleHandling">
+        <IsStuck name="CheckStuck"/>
+        <Sequence name="RecoverAndRetry">
+          <ClearCostmap name="ClearLocalCostmap" service_name="/local_costmap/clear_entirely_local_costmap"/>
+          <Wait name="Pause" milliseconds="2000"/>
+          <!-- Retry the waypoint sequence -->
+          <FollowWaypoints name="RetryWaypointSequence" action_name="follow_waypoints"/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</root>

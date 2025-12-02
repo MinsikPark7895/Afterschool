@@ -1,0 +1,163 @@
+/* AdminUserPage.css */
+.admin-user-page {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* 관리자 콘텐츠 컨테이너 */
+.admin-content {
+  padding-top: 0;
+}
+
+/* 헤더 스타일 */
+.admin-user-header {
+  background-color: #2d3748;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #4a5568;
+  margin-bottom: 0;
+}
+
+.admin-user-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  text-align: center;
+}
+
+/* 에러 메시지 */
+.error-message {
+  background-color: rgba(220, 50, 50, 0.2);
+  border: 1px solid rgba(220, 50, 50, 0.4);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 2rem;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* 필터 및 검색 영역 */
+.filters {
+  padding: 1.5rem 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: #1a1a1a;
+}
+
+.filters select {
+  background-color: #2d3748;
+  color: white;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters select:hover {
+  border-color: #6b7280;
+}
+
+.filters select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.filters button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filters button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* 사용자 테이블 컨테이너 */
+.user-table-container {
+  margin: 0 2rem;
+  background-color: #374151;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  order: 3;
+}
+
+/* 페이지네이션 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.pagination button {
+  background-color: #4b5563;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #6b7280;
+}
+
+.pagination button:disabled {
+  background-color: #374151;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .admin-user-page {
+    padding: 0;
+  }
+  
+  .admin-user-header {
+    padding: 1rem;
+  }
+  
+  .admin-user-header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .filters {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .user-table-container {
+    margin: 0 1rem;
+  }
+  
+  .pagination {
+    padding: 1rem;
+  }
+}

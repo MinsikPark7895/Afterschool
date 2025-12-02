@@ -1,0 +1,15 @@
+- terminal 1: open simulation environment
+
+$ ros2 launch turtlebot3_gazebo turtlebot3_school.launch.py
+
+- terminal 2: turn on slam nodes(cartographer)
+
+$ ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=true
+
+- terminal 3: turn on heuristic motor controller
+
+$ ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+- terminal 4: type this command and press enter when you want to save map
+
+$ ros2 run nav2_map_server map_saver_cli -f ~/map

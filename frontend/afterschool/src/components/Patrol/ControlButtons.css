@@ -1,0 +1,117 @@
+.control-buttons {
+    display: flex;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  .control-btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .control-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .control-btn:hover::before {
+    left: 100%;
+  }
+  
+  .control-btn:not(.active) {
+    background: linear-gradient(135deg, #4A90E2, #357ABD);
+    border: 2px solid transparent;
+  }
+  
+  .control-btn:not(.active):hover {
+    background: linear-gradient(135deg, #357ABD, #2E5F8A);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+  }
+  
+  .control-btn.active {
+    background: linear-gradient(135deg, #E74C3C, #C0392B);
+    border: 2px solid rgba(231, 76, 60, 0.3);
+    animation: pulse-red 2s ease-in-out infinite;
+  }
+  
+  .control-btn.active:hover {
+    background: linear-gradient(135deg, #C0392B, #A93226);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+  }
+  
+  @keyframes pulse-red {
+    0%, 100% {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(231, 76, 60, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 8px rgba(231, 76, 60, 0);
+    }
+  }
+  
+  .manual-button {
+    background: linear-gradient(135deg, #6C757D, #5A6268);
+    border: 2px solid transparent;
+  }
+  
+  .manual-button:hover {
+    background: linear-gradient(135deg, #5A6268, #495057);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
+  }
+  
+  .manual-button.active {
+    background: linear-gradient(135deg, #FF9500, #E6850E);
+    border: 2px solid rgba(255, 149, 0, 0.3);
+    animation: pulse-orange 2s ease-in-out infinite;
+  }
+  
+  .manual-button.active:hover {
+    background: linear-gradient(135deg, #E6850E, #CC7A0D);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 149, 0, 0.5);
+  }
+  
+  @keyframes pulse-orange {
+    0%, 100% {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(255, 149, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 8px rgba(255, 149, 0, 0);
+    }
+  }
+  
+  .control-btn:active {
+    transform: translateY(0);
+    transition: transform 0.1s;
+  }
+  
+  .control-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }

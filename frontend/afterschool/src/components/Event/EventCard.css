@@ -1,0 +1,164 @@
+.event-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid #4A90E2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.2s, transform 0.2s;
+  color: white;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.event-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.event-type-badge {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #a0aec0;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.severity-badge {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.event-card-content {
+  margin-bottom: 16px;
+}
+
+.event-info-row {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.event-info-row strong {
+  color: white;
+  margin-right: 8px;
+}
+
+.detection-data {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.evidence-files {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.evidence-files strong {
+  display: block;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.file-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.file-download-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #a0aec0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.file-download-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #4A90E2;
+  border-color: #4A90E2;
+}
+
+.more-files {
+  color: #888;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.event-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-button {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.detail-button:hover {
+  background-color: #357ABD;
+}
+
+/* 심각도별 카드 스타일 - 백엔드 Severity enum에 맞춤 */
+.event-card[style*="border-left-color: #ff4444"] {
+  background-color: rgba(255, 68, 68, 0.1);
+}
+
+.event-card[style*="border-left-color: #ff8800"] {
+  background-color: rgba(255, 136, 0, 0.1);
+}
+
+.event-card[style*="border-left-color: #4A90E2"] {
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .event-card {
+    padding: 12px;
+  }
+  
+  .event-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .file-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .file-download-btn {
+    width: 100%;
+    text-align: left;
+  }
+}

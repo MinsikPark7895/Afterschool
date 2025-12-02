@@ -1,0 +1,6 @@
+- terminal 1
+
+final map is school_final.world
+
+$ gzserver school_final.world &
+$ gzclient

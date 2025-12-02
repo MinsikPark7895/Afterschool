@@ -1,0 +1,29 @@
+# 🏗️ AfterSchool 개발 환경 구성
+services:
+  # 🔧 Jenkins CI/CD 서버
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8000:8080"  # Jenkins UI
+      - "50000:50000"  # Jenkins Agent 연결
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # 읽기 전용으로 변경
+    environment:
+      - JENKINS_OPTS=--httpPort=8080
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    restart: unless-stopped
+    networks:
+      - afterschool-network
+
+# 📡 네트워크 설정
+networks:
+  afterschool-network:
+    driver: bridge
+    name: afterschool-network
+
+# 📂 볼륨 설정
+volumes:
+  jenkins_home:
+    name: jenkins-data
