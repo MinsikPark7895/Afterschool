@@ -420,19 +420,6 @@ npm test
 2. 프론트엔드에서 S3 버킷과 키를 사용하여 파일 다운로드
 3. Canvas API를 사용하여 PGM 파일을 파싱하고 화면에 렌더링
 
-```typescript
-// 예시: Canvas를 사용한 PGM 파일 렌더링
-const loadPgmMap = async (s3Bucket: string, s3Key: string) => {
-  const response = await fetch(`/api/maps/download?bucket=${s3Bucket}&key=${s3Key}`);
-  const blob = await response.blob();
-  const imageBitmap = await createImageBitmap(blob);
-  
-  const canvas = document.getElementById('map-canvas') as HTMLCanvasElement;
-  const ctx = canvas.getContext('2d');
-  ctx?.drawImage(imageBitmap, 0, 0);
-};
-```
-
 #### 2. WebSocket 로봇 위치 반응형 레이아웃 문제
 
 **문제 상황:**
@@ -450,32 +437,6 @@ const loadPgmMap = async (s3Bucket: string, s3Key: string) => {
 2. WebSocket으로 받은 로봇 위치 좌표에 비율을 적용하여 스케일링
 3. 컴포넌트별로 다른 비율 적용 (지도 컴포넌트, 순찰 모드 등)
 
-```typescript
-// 예시: 반응형 로봇 위치 계산
-const calculateResponsivePosition = (
-  robotX: number, 
-  robotY: number, 
-  mapWidth: number, 
-  containerWidth: number
-) => {
-  const scaleRatio = containerWidth / mapWidth;
-  return {
-    x: robotX * scaleRatio,
-    y: robotY * scaleRatio
-  };
-};
-
-// WebSocket 메시지 수신 시
-websocketService.onRobotPositionUpdate((data) => {
-  const scaledPosition = calculateResponsivePosition(
-    data.position.pixel_x,
-    data.position.pixel_y,
-    MAP_CONFIG.width,
-    mapContainerRef.current?.clientWidth || 1440
-  );
-  setRobotPosition(scaledPosition);
-});
-```
 
 #### 3. WebSocket 연결 끊김 문제
 
@@ -487,17 +448,6 @@ websocketService.onRobotPositionUpdate((data) => {
 - 자동 재연결 로직 구현
 - Heartbeat 메커니즘 추가
 - 연결 상태 모니터링 및 사용자 알림
-
-```typescript
-// WebSocket 재연결 로직
-private handleReconnect() {
-  if (this.reconnectAttempts < this.maxReconnectAttempts) {
-    setTimeout(() => {
-      this.connect(this.callbacks);
-    }, this.reconnectInterval);
-  }
-}
-```
 
 ### Backend & Infrastructure 관련 이슈
 
